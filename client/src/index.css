@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 280 100% 70%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 280 100% 70%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon glow effects */
+.neon-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.neon-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+.neon-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3);
+}
+
+/* Parallax scrolling */
+.parallax {
+  transform-style: preserve-3d;
+}
+
+.parallax-element {
+  transform: translateZ(0);
+}
+
+/* Smooth hover transitions */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Typography */
+.luxury-text {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.cinematic-title {
+  background: linear-gradient(135deg, #a855f7, #ec4899, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 3D Canvas styles */
+canvas {
+  touch-action: none;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Mobile 3D optimizations */
+@media (max-width: 640px) {
+  canvas {
+    pointer-events: none; /* Disable interactions on mobile for better performance */
+  }
+}
+
+/* Loading animations */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Portfolio grid animations */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Service card hover effects */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  transform: scale(1.05) rotateY(5deg);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Mobile-first hero adjustments */
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Mobile spacing */
+  .mobile-px {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-py {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Mobile cards */
+  .service-card {
+    transform: none !important;
+  }
+  
+  .service-card:hover {
+    transform: scale(1.02) !important;
+  }
+  
+  /* Mobile button adjustments */
+  .btn-mobile {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Mobile glass effects - reduce blur for better performance */
+  .glass {
+    backdrop-filter: blur(5px) !important;
+  }
+  
+  .glass-dark {
+    backdrop-filter: blur(5px) !important;
+  }
+  
+  /* Mobile typography */
+  .mobile-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .mobile-text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .mobile-text-3xl {
+    font-size: 1.875rem;
+  }
+  
+  /* Mobile navigation */
+  .mobile-nav {
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Mobile scroll smoothing */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Tablet adjustments */
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Small desktop/large tablet */
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #9333ea, #db2777);
+}
